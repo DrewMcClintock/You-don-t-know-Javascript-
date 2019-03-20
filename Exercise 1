@@ -1,0 +1,23 @@
+const TAX_RATE = 0.08;
+const phone = 38;
+const accessory = 5.00;
+const spendThres = 500.00;
+var bankAmt = 1000.00;
+
+function findTotal(total){
+for (var i = 0; i <= bankAmt; i = i + phone){
+  total = i;
+  if (total < spendThres){
+    total = total + accessory;
+  }
+  return total;
+}
+}
+
+function calculateFinalPurchaseAmount(total) { 
+  total = total + (total * TAX_RATE); 
+  return total; 
+}
+function printAmount(total) { 
+  console.log("$" +  String(total.toFixed( 2 )) ); 
+}
