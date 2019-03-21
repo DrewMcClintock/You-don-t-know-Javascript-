@@ -1,23 +1,51 @@
-const TAX_RATE = 0.08;
-const phone = 38;
-const accessory = 5.00;
-const spendThres = 500.00;
-var bankAmt = 1000.00;
+FIRST TRY:
+const taxRate = 0.08;
+const phone = 40.99;
+const accessory = 2.99;
+const spendThres = 200;
 
-function findTotal(total){
+var bankAmt= prompt("Bank Balance");
+var amount = 0;
+
 for (var i = 0; i <= bankAmt; i = i + phone){
-  total = i;
-  if (total < spendThres){
-    total = total + accessory;
+ var amount = i;
+  if (amount < spendThres){
+    amount = amount + accessory + (amount * taxRate);
   }
-  return total;
+  console.log("$" + amount.toFixed(2));
 }
+//Didn't work because it created a list
+
+FINAL:
+const taxRate = 0.08;
+const phone = 40.99;
+const accessory = 2.99;
+const spendThres = 200.00;
+
+var bankAmt= prompt("Bank Balance");
+var amount = 0;
+
+function tax(amount){
+  return amount * taxRate; 
 }
 
-function calculateFinalPurchaseAmount(total) { 
-  total = total + (total * TAX_RATE); 
-  return total; 
+function format(amount){
+  return "$" + amount.toFixed(2);
 }
-function printAmount(total) { 
-  console.log("$" +  String(total.toFixed( 2 )) ); 
+
+while (amount < bankAmt){
+  amount = amount + phone;
+  
+  if (amount < spendThres){
+  amount = amount + accessory;
+    }
 }
+amount = amount + tax(amount);
+
+console.log(format(amount));
+
+if (amount > bankAmt){
+  console.log("Cannot Afford It");
+}else{
+    console.log("SOLD");
+  }
